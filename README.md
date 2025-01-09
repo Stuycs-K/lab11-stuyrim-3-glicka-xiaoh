@@ -17,6 +17,8 @@ Make a clear list of features that work/dont work
 
 
 ## Adventurer Subclasses
-
-replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
-
+| Left Align (default) | Center Align | Right Align |
+| :------------------- | :----------: | ----------: |
+| React.js             | Node.js      | MySQL       |
+| Next.js              | Express      | MongoDB     |
+| Vue.js               | Nest.js      | Redis       |
