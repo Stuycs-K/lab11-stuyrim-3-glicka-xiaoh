@@ -17,8 +17,8 @@ Make a clear list of features that work/dont work
 
 
 ## Adventurer Subclasses
-| Type: | Healer | Wizard |
+| **Type:** | *Healer* | *Wizard* |
 | :------------------- | :----------: | ----------: |
-| Attack             | The healers normal attack does a small amount of damage and also heals her team.    | The wizards normal attack does a decent amount of damage to all enemies(splash attack)      |
-| Special             | The healers special attack heals her entire team      | The wizards special attack is called lightning strike, and does damage to the entire enemy team.     |
-| Mana Cost              | 60      | 70       |
+| **Attack**             | The healers normal attack does a small amount of damage and also heals her team.    | The wizards normal attack does a decent amount of damage to all enemies(splash attack)      |
+| **Special**             | The healers special attack heals her entire team      | The wizards special attack is called lightning strike, and does damage to the entire enemy team.     |
+| **Mana Cost**              | 60      | 70       |
