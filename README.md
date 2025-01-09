@@ -23,3 +23,4 @@ Make a clear list of features that work/dont work
 | **Special**             | The healers special attack heals her entire team      | The wizards special attack is called lightning strike, and does damage to the entire enemy team.     |
 | **Mana Cost**              | 60      | 70       |
 | **MAX HP**              | 50      | 70       |
+| **Supports**              | Gains 50 mana + gives 10 mana to all allies   | gain 30 mana + gives 10 mana to all allies       |
