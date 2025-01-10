@@ -19,7 +19,7 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 | **Type:** | *Healer* | *Mage* |
 | :------------------- | :----------: | ----------: |
-| **Attack**             | The healer's normal attack does a small amount of damage or heal her team.    | The mage's normal attack does a decent amount of damage to two enemies(splash attack)      |
+| **Attack**             | The healer's normal attack does a small amount of damage or heal her teammate.    | The mage's normal attack does a decent amount of damage to two enemies(splash attack)      |
 | **Special**             | The healer's special attack heals her entire team      | The mage's special attack is called lightning strike, and deals damage based on how many people you select.     |
 | **Mana Cost**              | 60      | 70       |
 | **MAX HP**              | 50      | 70       |
