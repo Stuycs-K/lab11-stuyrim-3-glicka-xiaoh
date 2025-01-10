@@ -7,11 +7,10 @@ public class Healer extends Adventurer{
     super(name,hp);
     manaMax = 12;
     mana = manaMax/2;
-    preferredClass = class;
   }
 
   public Warrior(String name, int hp){
-    this(name,hp,"barbarian");
+    this(name,hp,);
   }
 
   public Warrior(String name){
@@ -61,22 +60,19 @@ public class Healer extends Adventurer{
       for(int i = 0; i < 3; i++){
           setHP(getHP(Team[i]) + restore);
       }
-      return getName() + " casts 'Salvation' to heal" + " the whole team for " + restore " health!";
+      return getName() + " summons Mediarahan to heal" + " the whole team for " + restore " health!";
     }else{
-      return "Not enough mana to use their ultimate. Instead "+support(other);
+      return "Not enough mana to use their ultimate. Instead "+ support();
     }
 
   }
 
-  public String support(Adventurer other){
-    return "Gives a warrior's shout to "+other+" and restores "
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
-  }
-
   public String support(){
-    int hp = 1;
-    setHP(getHP()+hp);
-    return this+" pounds his chest to restores "+restoreSpecial(6)+" "
-    + getSpecialName()+ " and "+hp+" HP";
+    int manares = random(50);
+    for(int i =0; i < 3; i++){
+      Ally[i].setSpecial(getSpecial() + manares);
+    }
+    return this+" uses 'Salvation' to "+restoreSpecial(50)+" and 10 "
+    + getSpecialName() + " to all teamates";
   }
 }
