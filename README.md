@@ -18,7 +18,7 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 | **Type:** | *Healer* | *Mage* | *Warrior* |
-| :------------------- | :----------: | ----------: |
+| :------------------- | :----------: | ----------: | ----------: |
 | **Attack**             | The healer's normal attack does a small amount of damage or heal her teammate.    | The mage's normal attack does a decent amount of damage to two enemies(splash attack)      | The Warrior's attack do damage on one target |
 | **Special**             | The healer's special attack heals her entire team      | The mage's special attack is called lightning strike, and deals damage based on how many people you select.     | The Warrior's special does extra damage to one target|
 | **Special Cost**              | 60      | 70       | 30      |
