@@ -21,10 +21,12 @@ public class Game{
   //(columns and rows start at 1 (not zero) in the terminal)
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-  }
+Text.go(startRow, startCol);
+System.out.println(Text.colorize(s, 37));
+  /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+  //YOUR CODE HERE
+  /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+}
 
   /*Use this method to place text on the screen at a particular location.
   *When the length of the text exceeds width, continue on the next line
@@ -36,11 +38,15 @@ public class Game{
   *@param width the number of characters per row
   *@param height the number of rows
   */
-  public static void TextBox(int row, int col, int width, int height, String text){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+public static void TextBox(int row, int col, int width, int height, String text){
+  for (int i = 0; i < height; i++) {
+    for(int w = 0; w < width/text.length(); w++){
+    drawText(text, row + i, col+w);
   }
+}
+
+
+}
 
 
 

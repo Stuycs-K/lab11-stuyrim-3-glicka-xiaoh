@@ -1,7 +1,7 @@
 public class Tester{
   public static void main(String[] args){
     Text.clear();
-    TextBox(1,1,1,1, "h");
+    TextBox(1,1,20,2, "Hello World");
 
   }
 
@@ -25,12 +25,28 @@ System.out.println(Text.colorize(s, 37));
 *@param height the number of rows
 */
 public static void TextBox(int row, int col, int width, int height, String text){
-  for (int i = 0; i < height; i++) {
-    for(int w = 0; i < width/text.length(); w++){
+        int ind = 0; 
+        for (int i = 0; i < height; i++) {
+            String line = "";
+            while (line.length() < width ) {
+                line += text.charAt(ind); 
+                ind++; 
+                if(ind == text.length()){
+                  ind -= text.length();
+                }
+            }
+            drawText(line, row + i, col);
+         //   ind = 0;
+        }
+
+
+
+/*  for (int i = 0; i < height; i++) {
+    for(int w = 0; w < width/text.length(); w++){
     drawText(text, row + i, col+w);
   }
 }
 
-
-}
+*/
+} 
 }
