@@ -1,13 +1,13 @@
 public class Warrior extends Adventurer{
-  int energy, energyMax;
+  int mana, manaMax;
   String preferredClass;
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public Warrior(String name, int hp, String class){
     super(name,hp);
-    energyMax = 12;
-    energy = energyMax/2;
+    manaMax = 100;
+    mana = 50;
     preferredClass = class;
   }
 
@@ -16,7 +16,7 @@ public class Warrior extends Adventurer{
   }
 
   public Warrior(String name){
-    this(name,24);
+    this(name,100);
   }
 
   public Warrior(){
@@ -25,55 +25,54 @@ public class Warrior extends Adventurer{
 
   /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
-    return "energy";
+    return "mana";
   }
 
   public int getSpecial(){
-    return energy;
+    return mana;
   }
 
   public void setSpecial(int n){
-    energy = n;
+    mana = n;
   }
 
   public int getSpecialMax(){
-    return energyMax;
+    return manaMax;
   }
 
-  /*Deal 2-7 damage to opponent, restores 2 energy*/
   public String attack(Adventurer other){
-    int damage = (int)(Math.random()*6)+2;
+    int damage = 20;
     other.applyDamage(damage);
-    restoreSpecial(2);
+    restoreSpecial(5);
     return this + " attacked "+ other + " and dealt "+ damage +
     " points of damage. They then taunted.";
   }
 
-  /*Deal 3-12 damage to opponent, only if energy is high enough.
-  *Reduces energy by 8.
+  /*Deal 30-50 damage to opponent, only if mana is high enough.
+  *Reduces mana by 20.
   */
   public String specialAttack(Adventurer other){
-    if(getSpecial() >= 8){
-      setSpecial(getSpecial()-8);
-      int damage = (int)(Math.random()*5+Math.random()*5)+3;
+    if(getSpecial() >= 20){
+      setSpecial(getSpecial()-20);
+      int damage = 35; //change this to random from 30-50
       other.applyDamage(damage);
       return this + " used their "+preferredClass+
       " skills to damage"+other+" dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough energy to use their ultimate. Instead "+attack(other);
+      return "Not enough mana to use their ultimate. Instead "+attack(other);
     }
 
   }
-  /*Restores 5 special to other*/
+
   public String support(Adventurer other){
     return "Gives a warrior's shout to "+other+" and restores "
-    + other.restoreSpecial(5)+" "+other.getSpecialName();
+    + other.restoreSpecial(20)+" "+other.getSpecialName();
   }
-  /*Restores 6 special and 1 hp to self.*/
+
   public String support(){
-    int hp = 1;
+    int hp = 10;
     setHP(getHP()+hp);
-    return this+" pounds his chest to restores "+restoreSpecial(6)+" "
+    return this+" pounds his chest to restores "+restoreSpecial(20)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
