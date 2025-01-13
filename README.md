@@ -21,6 +21,6 @@ Make a clear list of features that work/dont work
 | :------------------- | :----------: | ----------: | ----------: |
 | **Attack**             | The healer's normal attack does a small amount of damage or heal her teammate.    | The mage's normal attack does a decent amount of damage to two enemies(splash attack)      | The Warrior's attack do damage on one target |
 | **Special**             | The healer's special attack heals her entire team      | The mage's special attack is called lightning strike, and deals damage based on how many people you select.     | The Warrior's special does extra damage to one target|
-| **Special Cost**              | 60      | 70       | 30      |
+| **Special Cost**              | 50      | 35       | 20      |
 | **MAX HP**              | 50      | 70       | 100       |
-| **Supports**              | Gains 50 mana + gives 10 mana to all allies   | gain 30 mana + gives 10 mana to all allies       | gain 20 energy or give 20 energy to ally |
+| **Supports**              | Gains 30-50 mana + gives 10 mana to all allies   | gain 30 mana + gives 10 mana to all allies       | gain 20 energy or give 20 energy to ally |
