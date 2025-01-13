@@ -38,15 +38,20 @@ System.out.println(Text.colorize(s, 37));
   *@param width the number of characters per row
   *@param height the number of rows
   */
-public static void TextBox(int row, int col, int width, int height, String text){
-  for (int i = 0; i < height; i++) {
-    for(int w = 0; w < width/text.length(); w++){
-    drawText(text, row + i, col+w);
-  }
-}
-
-
-}
+  public static void TextBox(int row, int col, int width, int height, String text){
+          int ind = 0;
+          for (int i = 0; i < height; i++) {
+              String line = "";
+              while (line.length() < width ) {
+                  line += text.charAt(ind);
+                  ind++;
+                  if(ind == text.length()){
+                    ind -= text.length();
+                  }
+              }
+              drawText(line, row + i, col);
+           //   ind = 0;
+          }}
 
 
 
@@ -65,7 +70,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
     *HP: 10       HP: 15     HP:19
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
-    */
+
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
