@@ -1,27 +1,24 @@
 public class Healer extends Adventurer{
   int mana, manaMax;
 
-  /*the other constructors ultimately call the constructor
-  *with all parameters.*/
   public Warrior(String name, int hp, String class){
     super(name,hp);
-    manaMax = 12;
-    mana = manaMax/2;
+    manaMax = 100;
+    mana = 50;
   }
 
   public Warrior(String name, int hp){
-    this(name,hp,);
+    this(name,hp);
   }
 
   public Warrior(String name){
-    this(name,24);
+    this(name,50);
   }
 
   public Warrior(){
     this("Adam Warlock");
   }
 
-  /*The next 8 methods are all required because they are abstract:*/
   public String getSpecialName(){
     return "mana";
   }
@@ -40,9 +37,9 @@ public class Healer extends Adventurer{
 
   public String attack(Adventurer other){
     if(enemy){
-      int damage = (int)(Math.random()*6)+2;
+      int damage = 5;
       other.applyDamage(damage);
-      restoreSpecial(2);
+      restoreSpecial(10);
       return this + " tickled "+ other + " and dealt "+ damage +
       " points of damage.";
     }
@@ -54,9 +51,9 @@ public class Healer extends Adventurer{
   }
 
   public String specialAttack{
-    if(getSpecial() >= 8){
-      setSpecial(getSpecial()-8);
-      int restore = (int)(Math.random()*5+Math.random()*5)+3;
+    if(getSpecial() >= 60){
+      setSpecial(getSpecial()-60);
+      int restore = 30; //change this to a random int
       for(int i = 0; i < 3; i++){
           setHP(getHP(Team[i]) + restore);
       }
