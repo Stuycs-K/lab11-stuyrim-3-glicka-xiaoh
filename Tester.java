@@ -1,14 +1,14 @@
 public class Tester{
   public static void main(String[] args){
     Text.clear();
-    TextBox(1,1,20,2, "Hello World");
-
+//    TextBox(1,1,20,2, "Hello World");
+    Game.drawBackground();
   }
 
 
-public static void drawText(String s,int startRow, int startCol){
+public static void drawText(String s,int startRow, int startCol, int b){
 Text.go(startRow, startCol);
-System.out.println(Text.colorize(s, 37));
+System.out.println(Text.colorize(s, 37, b));
   /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
   //YOUR CODE HERE
   /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -25,17 +25,17 @@ System.out.println(Text.colorize(s, 37));
 *@param height the number of rows
 */
 public static void TextBox(int row, int col, int width, int height, String text){
-        int ind = 0; 
+        int ind = 0;
         for (int i = 0; i < height; i++) {
             String line = "";
             while (line.length() < width ) {
-                line += text.charAt(ind); 
-                ind++; 
+                line += text.charAt(ind);
+                ind++;
                 if(ind == text.length()){
                   ind -= text.length();
                 }
             }
-            drawText(line, row + i, col);
+            drawText(line, row + i, col, 0);
          //   ind = 0;
         }
 
@@ -48,5 +48,5 @@ public static void TextBox(int row, int col, int width, int height, String text)
 }
 
 */
-} 
+}
 }
