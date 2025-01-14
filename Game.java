@@ -12,13 +12,19 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    int x =0;
-    int y =0;
-for ( x = 1; x < WIDTH; x++){
-  for (y = 1; y<HEIGHT; y++ ){
-    drawText(" ", x, y, 10);
-  }
-}
+    for (int x = 1; x < WIDTH; x++) {
+      for (int y = 1; y < HEIGHT; y++) {
+        drawText(" ", y, x, BORDER_BACKGROUND);
+      }
+    }
+    int line1 = HEIGHT / 3;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line1, x, BORDER_COLOR);
+        }
+        int line2 = (HEIGHT * 2) / 3;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line2, x, BORDER_COLOR);
+        }
   //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
