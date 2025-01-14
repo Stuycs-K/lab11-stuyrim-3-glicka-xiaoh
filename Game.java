@@ -12,9 +12,9 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    for (int x = 1; x < WIDTH; x++) {
-      for (int y = 1; y < HEIGHT; y++) {
-        drawText(" ", y, x, BORDER_BACKGROUND);
+    for (int x = 1; x < HEIGHT; x++) {
+      for (int y = 1; y < WIDTH; y++) {
+        drawText(" ", x, y, BORDER_BACKGROUND);
       }
     }
     int line1 = HEIGHT / 3;
