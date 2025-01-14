@@ -17,6 +17,7 @@ public class Game{
         drawText(" ", x, y, BORDER_BACKGROUND);
       }
     }
+
     int line = 0;
         for (int x = 1; x < WIDTH; x++) {
           drawText("-", line, x, Text.GREEN);
@@ -29,15 +30,25 @@ public class Game{
         for (int x = 1; x < WIDTH; x++) {
           drawText("-", line2, x, BORDER_COLOR);
         }
-        int line3 = (HEIGHT * 3) / 3;
+        int line3 = (HEIGHT);
         for (int x = 1; x < WIDTH; x++) {
           drawText("-", line3, x, BORDER_COLOR);
         }
+        for(int y = 1; y < HEIGHT; y++){
+          if((line2<y && y<line3) || (line<y && y<line1)){
+          drawText("|", y, WIDTH/3, Text.BLACK);
+        }
+      }
+        for(int y = 1; y < HEIGHT; y++){
+          if((line2<y && y<line3) || (line<y && y<line1)){
+          drawText("|", y, 2 *WIDTH/3, Text.BLACK);
+        }
+
   //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-  }
+  }}
 
   //Display a line of text starting at
   //(columns and rows start at 1 (not zero) in the terminal)
