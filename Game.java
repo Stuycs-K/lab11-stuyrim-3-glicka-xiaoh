@@ -2,8 +2,8 @@ import java.util.*;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.BLACK;
-  private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  private static final int BORDER_COLOR = Text.RED;
+  private static final int BORDER_BACKGROUND = Text.CYAN + Text.BACKGROUND;
 
   public static void main(String[] args) {
   //  run();
@@ -17,13 +17,21 @@ public class Game{
         drawText(" ", x, y, BORDER_BACKGROUND);
       }
     }
+    int line = 0;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line, x, Text.GREEN);
+        }
     int line1 = HEIGHT / 3;
         for (int x = 1; x < WIDTH; x++) {
-          drawText("-", line1, x, BORDER_COLOR);
+          drawText("-", line1, x, Text.GREEN);
         }
         int line2 = (HEIGHT * 2) / 3;
         for (int x = 1; x < WIDTH; x++) {
           drawText("-", line2, x, BORDER_COLOR);
+        }
+        int line3 = (HEIGHT * 3) / 3;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line3, x, BORDER_COLOR);
         }
   //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -88,6 +96,7 @@ System.out.println(Text.colorize(s, 37, b));
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
 */
+/*
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       String names = "";
       String hp = "";
@@ -99,8 +108,8 @@ System.out.println(Text.colorize(s, 37, b));
       }
 
       names = names.substring(0, names.length()-4);
-      hp = hp.substring(0, hp.length()-4)
-      special = special.substring(0, special.length()-4)
+      hp = hp.substring(0, hp.length()-4);
+      special = special.substring(0, special.length()-4);
 
       TextBox(startRow, 1, 20, 4, names);
       TextBox(startRow + 1, 1, 20, 4, hp);
