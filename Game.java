@@ -6,12 +6,20 @@ public class Game{
   private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    run();
+  //  run();
   }
 
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
+    int x =0;
+    int y =0;
+for ( x = 1; x < WIDTH; x++){
+  for (y = 1; y<HEIGHT; y++ ){
+    drawText(" ", x, y, 10);
+  }
+}
+  //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -20,9 +28,9 @@ public class Game{
   //Display a line of text starting at
   //(columns and rows start at 1 (not zero) in the terminal)
   //use this method in your other text drawing methods to make things simpler.
-  public static void drawText(String s,int startRow, int startCol){
+  public static void drawText(String s,int startRow, int startCol, int b){
 Text.go(startRow, startCol);
-System.out.println(Text.colorize(s, 37));
+System.out.println(Text.colorize(s, 37, b));
   /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
   //YOUR CODE HERE
   /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -49,11 +57,25 @@ System.out.println(Text.colorize(s, 37));
                     ind -= text.length();
                   }
               }
-              drawText(line, row + i, col);
+            }
+          }
+
+          /*
+public static void TextBox(int row, int col, int width, int height, String text){
+  for (int i = 0; i < height; i++) {
+    for(int w = 0; w < width/text.length(); w++){
+    drawText(text, row + i, col+w);
+  }
+}
+
+
+              drawText(line, row + i, col, 0);
            //   ind = 0;
-          }}
+          }
 
+*/
 
+/*
 
 
     //return a random adventurer (choose between all available subclasses)
@@ -73,10 +95,13 @@ System.out.println(Text.colorize(s, 37));
 
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
+
+
+
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-    }
+
 
 
   //Use this to create a colorized number string based on the % compared to the max value.
@@ -86,7 +111,15 @@ System.out.println(Text.colorize(s, 37));
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
+    if(((double)hp / (double) maxHP) < 0.25){
+      return Text.colorize(output, Text.RED);
+    }
+    else if (((double)hp / (double) maxHP) < 0.75){
+      return Text.colorize(output, Text.YELLOW);
+    }
+    else{
+          return Text.colorize(output, Text.WHITE);
+    }
   }
 
 
@@ -250,4 +283,9 @@ System.out.println(Text.colorize(s, 37));
     //After quit reset things:
     quit();
   }
+
+
+
+
+
 }
