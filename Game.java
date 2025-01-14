@@ -2,27 +2,60 @@ import java.util.*;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.BLACK;
-  private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  private static final int BORDER_COLOR = Text.RED;
+  private static final int BORDER_BACKGROUND = Text.CYAN + Text.BACKGROUND;
 
   public static void main(String[] args) {
-    run();
+  //  run();
   }
 
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
+    for (int x = 1; x < HEIGHT; x++) {
+      for (int y = 1; y < WIDTH; y++) {
+        drawText(" ", x, y, BORDER_BACKGROUND);
+      }
+    }
+
+    int line = 0;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line, x, Text.GREEN);
+        }
+    int line1 = HEIGHT / 3;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line1, x, Text.GREEN);
+        }
+        int line2 = (HEIGHT * 2) / 3;
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line2, x, BORDER_COLOR);
+        }
+        int line3 = (HEIGHT);
+        for (int x = 1; x < WIDTH; x++) {
+          drawText("-", line3, x, BORDER_COLOR);
+        }
+        for(int y = 1; y < HEIGHT; y++){
+          if((line2<y && y<line3) || (line<y && y<line1)){
+          drawText("|", y, WIDTH/3, Text.BLACK);
+        }
+      }
+        for(int y = 1; y < HEIGHT; y++){
+          if((line2<y && y<line3) || (line<y && y<line1)){
+          drawText("|", y, 2 *WIDTH/3, Text.BLACK);
+        }
+
+  //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-  }
+  }}
 
   //Display a line of text starting at
   //(columns and rows start at 1 (not zero) in the terminal)
   //use this method in your other text drawing methods to make things simpler.
-  public static void drawText(String s,int startRow, int startCol){
+  public static void drawText(String s,int startRow, int startCol, int b){
 Text.go(startRow, startCol);
-System.out.println(Text.colorize(s, 37));
+System.out.println(Text.colorize(s, 37, b));
   /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
   //YOUR CODE HERE
   /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -38,17 +71,25 @@ System.out.println(Text.colorize(s, 37));
   *@param width the number of characters per row
   *@param height the number of rows
   */
-public static void TextBox(int row, int col, int width, int height, String text){
-  for (int i = 0; i < height; i++) {
-    for(int w = 0; w < width/text.length(); w++){
-    drawText(text, row + i, col+w);
-  }
-}
+  public static void TextBox(int row, int col, int width, int height, String text){
+          int ind = 0;
+          for (int i = 0; i < height; i++) {
+              String line = "";
+              while (line.length() < width ) {
+                  line += text.charAt(ind);
+                  ind++;
+                  if(ind == text.length()){
+                    ind -= text.length();
+                  }
+              }
+            }
+          }
 
 
-}
 
 
+
+/*
 
 
     //return a random adventurer (choose between all available subclasses)
@@ -65,13 +106,33 @@ public static void TextBox(int row, int col, int width, int height, String text)
     *HP: 10       HP: 15     HP:19
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
-    */
+*/
+/*
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
+      String names = "";
+      String hp = "";
+      String special = "";
+      for (Adventurer adventurer : party) {
+        names += adventurer.getName() + "    ";
+        hp += "HP: " + adventurer.getHP() + "    ";
+        special += adventurer.getSpecial() + ": " + adventurer.getSpecialValue() + "    ";
+      }
+
+      names = names.substring(0, names.length()-4);
+      hp = hp.substring(0, hp.length()-4);
+      special = special.substring(0, special.length()-4);
+
+      TextBox(startRow, 1, 20, 4, names);
+      TextBox(startRow + 1, 1, 20, 4, hp);
+      TextBox(startRow + 2, 1, 20, 4, special);
+      TextBox(startRow + 3, 1, 20, 4, "");
+    }
+
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-    }
+
 
 
   //Use this to create a colorized number string based on the % compared to the max value.
@@ -81,7 +142,15 @@ public static void TextBox(int row, int col, int width, int height, String text)
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
+    if(((double)hp / (double) maxHP) < 0.25){
+      return Text.colorize(output, Text.RED);
+    }
+    else if (((double)hp / (double) maxHP) < 0.75){
+      return Text.colorize(output, Text.YELLOW);
+    }
+    else{
+          return Text.colorize(output, Text.WHITE);
+    }
   }
 
 
@@ -245,4 +314,9 @@ public static void TextBox(int row, int col, int width, int height, String text)
     //After quit reset things:
     quit();
   }
+
+
+
+
+
 }
