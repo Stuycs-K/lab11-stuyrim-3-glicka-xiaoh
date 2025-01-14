@@ -66,20 +66,9 @@ System.out.println(Text.colorize(s, 37, b));
             }
           }
 
-          /*
-public static void TextBox(int row, int col, int width, int height, String text){
-  for (int i = 0; i < height; i++) {
-    for(int w = 0; w < width/text.length(); w++){
-    drawText(text, row + i, col+w);
-  }
-}
 
 
-              drawText(line, row + i, col, 0);
-           //   ind = 0;
-          }
 
-*/
 
 /*
 
@@ -98,10 +87,26 @@ public static void TextBox(int row, int col, int width, int height, String text)
     *HP: 10       HP: 15     HP:19
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
-
+*/
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
+      String names = "";
+      String hp = "";
+      String special = "";
+      for (Adventurer adventurer : party) {
+        names += adventurer.getName() + "    ";
+        hp += "HP: " + adventurer.getHP() + "    ";
+        special += adventurer.getSpecial() + ": " + adventurer.getSpecialValue() + "    ";
+      }
 
+      names = names.substring(0, names.length()-4);
+      hp = hp.substring(0, hp.length()-4)
+      special = special.substring(0, special.length()-4)
 
+      TextBox(startRow, 1, 20, 4, names);
+      TextBox(startRow + 1, 1, 20, 4, hp);
+      TextBox(startRow + 2, 1, 20, 4, special);
+      TextBox(startRow + 3, 1, 20, 4, "");
+    }
 
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
