@@ -4,9 +4,9 @@ public class Boss extends Adventurer{
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public Boss(String name, int hp){
-    super(name,hp);
+    super(name,hp,false);
     manaMax = 200;
-    mana = 200;
+    mana = 150;
   }
 
   public Boss(String name, int hp){
@@ -61,7 +61,7 @@ public class Boss extends Adventurer{
   public String support(){
     int hp = 30;
     setHP(getHP()+hp);
-    return this+" meditated with harmony recovery to restores "+restoreSpecial(30)+" "
+    return this.getName()+" meditated with harmony recovery to restores "+restoreSpecial(30)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }

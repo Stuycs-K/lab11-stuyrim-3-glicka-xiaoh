@@ -1,21 +1,17 @@
 public class Healer extends Adventurer{
   int mana, manaMax;
 
-  public Warrior(String name, int hp, String class){
-    super(name,hp);
+  public Healer(String name, int hp, String class){
+    super(name,hp,false);
     manaMax = 100;
-    mana = 50;
+    mana = 25;
   }
 
-  public Warrior(String name, int hp){
-    this(name,hp);
-  }
-
-  public Warrior(String name){
+  public Healer(String name){
     this(name,50);
   }
 
-  public Warrior(){
+  public Healer(){
     this("Adam Warlock");
   }
 
@@ -28,7 +24,7 @@ public class Healer extends Adventurer{
   }
 
   public void setSpecial(int n){
-    mana = n;
+    mana = Math.min(n, manaMax);
   }
 
   public int getSpecialMax(){
@@ -36,40 +32,38 @@ public class Healer extends Adventurer{
   }
 
   public String attack(Adventurer other){
-    if(enemy){
+    if(isEnemy()){
       int damage = 5;
       other.applyDamage(damage);
       restoreSpecial(10);
-      return this + " tickled "+ other + " and dealt "+ damage +
+      return this.getName() + " tickled "+ other + " and dealt "+ damage +
       " points of damage.";
     }
     else {
-      int restore = (int)(Math.random()*6)+2;
-      setHP(getHP() + restore);
-      return getName() + " casts 'Dia' to heal" + " other for " + restore " health!";
+      int restore = (int)(Math.random()*19)+10;
+      other.setHP(getHP() + restore);
+      return this.getName() + " casts 'Dia' to heal" + other.getName() + " for " + restore + " health!";
     }
   }
 
-  public String specialAttack{
-    if(getSpecial() >= 60){
-      setSpecial(getSpecial()-60);
-      int restore = 30; //change this to a random int
-      for(int i = 0; i < 3; i++){
-          setHP(getHP(Team[i]) + restore);
-      }
-      return getName() + " summons Mediarahan to heal" + " the whole team for " + restore " health!";
-    }else{
-      return "Not enough mana to use their ultimate. Instead "+ support();
+public String specialAttack(ArrayList<Adventurer> team) {
+        if (getSpecial() >= 60) {
+            setSpecial(getSpecial() - 60);
+            int restore = 30;
+            for (Adventurer member : team) {
+                member.setHP(member.getHP() + restore);
+            }
+            return this.getName() + " summons Mediarahan to heal the whole team for " + restore + " health!";
+        } else {
+            return "Not enough mana to use their ultimate. They started started panicking";
+        }
     }
-
-  }
 
   public String support(){
-    int manares = random(50);
-    for(int i =0; i < 3; i++){
-      Ally[i].setSpecial(getSpecial() + manares);
-    }
-    return this+" uses 'Salvation' to "+restoreSpecial(50)+" and 10 "
-    + getSpecialName() + " to all teamates";
+    int manaRes = 20;
+    int heal = 15;
+    restoreSpecial(manaRes);
+    setHP(getHP() + heal);
+    return this.getName() + " uses 'Salvation' to restore " + manaRes + " mana and heals themselves for " + heal + " HP.";
   }
 }

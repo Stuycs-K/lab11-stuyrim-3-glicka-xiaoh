@@ -4,7 +4,7 @@ public class Warrior extends Adventurer{
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public Warrior(String name, int hp, String class){
+  public Warrior(String name, int hp, String class, String preferredClass){
     super(name,hp);
     manaMax = 100;
     mana = 50;
@@ -32,7 +32,7 @@ public class Warrior extends Adventurer{
   }
 
   public void setSpecial(int n){
-    mana = n;
+    mana = Math.min(n, manaMax);
   }
 
   public int getSpecialMax(){
@@ -43,32 +43,32 @@ public class Warrior extends Adventurer{
     int damage = 20;
     other.applyDamage(damage);
     restoreSpecial(5);
-    return this + " attacked "+ other + " and dealt "+ damage +
+    return this.getName() + " attacked "+ other + " and dealt "+ damage +
     " points of damage. They then taunted.";
   }
 
   public String specialAttack(Adventurer other){
     if(getSpecial() >= 20){
       setSpecial(getSpecial()-20);
-      int damage = 35; //change this to random from 30-50
+      int damage = (int) (Math.random() * 21) + 30; //change this to random from 30-50
       other.applyDamage(damage);
-      return this + " used their "+preferredClass+
-      " skills to damage"+other+" dealing "+ damage +" points of damage.";
+      return this.getName() + " used their "+preferredClass+
+      " skills to damage "+other+" dealing "+ damage +" points of damage.";
     }else{
-      return "Not enough mana to use their ultimate. Instead "+attack(other);
+      return "Not enough mana to summon Mediarahan. Instead "+attack(other);
     }
 
   }
 
   public String support(Adventurer other){
-    return "Gives a warrior's shout to "+other+" and restores "
+    return this.getName() + " gives a warrior's shout to "+other+" and restores "
     + other.restoreSpecial(20)+" "+other.getSpecialName();
   }
 
   public String support(){
     int hp = 10;
     setHP(getHP()+hp);
-    return this+" pounds his chest to restores "+restoreSpecial(20)+" "
+    return this.getName() +" pounds his chest to restores "+restoreSpecial(20)+" "
     + getSpecialName()+ " and "+hp+" HP";
   }
 }
