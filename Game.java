@@ -173,13 +173,18 @@ System.out.println(Text.colorize(s, 37, b));
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-
+        Text.go(30, 30);
+        Text.showCursor();
       //show cursor
 
       String input = in.nextLine();
 
       //clear the text that was written
-
+      for (int x = 1; x < HEIGHT/3 && x > HEIGHT*2/3; x++) {
+        for (int y = 1; y < WIDTH; y++) {
+          drawText(" ", x, y, BORDER_BACKGROUND);
+        }
+      }
       return input;
   }
 
@@ -200,7 +205,7 @@ System.out.println(Text.colorize(s, 37, b));
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
-    double rand = Math.random()
+    double rand = Math.random();
     if(rand < 0.3333){
       enemies.add("Boss");
     }
