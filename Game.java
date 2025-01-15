@@ -1,8 +1,9 @@
 import java.util.*;
+import java.util.Random;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.RED;
+  private static final int BORDER_COLOR = Text.GREEN;
   private static final int BORDER_BACKGROUND = Text.CYAN + Text.BACKGROUND;
 
   public static void main(String[] args) {
@@ -20,11 +21,11 @@ public class Game{
 
     int line = 0;
         for (int x = 1; x < WIDTH; x++) {
-          drawText("-", line, x, Text.GREEN);
+          drawText("-", line, x, Text.RED);
         }
     int line1 = HEIGHT / 3;
         for (int x = 1; x < WIDTH; x++) {
-          drawText("-", line1, x, Text.GREEN);
+          drawText("-", line1, x, Text.RED);
         }
         int line2 = (HEIGHT * 2) / 3;
         for (int x = 1; x < WIDTH; x++) {
@@ -199,6 +200,16 @@ System.out.println(Text.colorize(s, 37, b));
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+    double rand = Math.random()
+    if(rand < 0.3333){
+      enemies.add("Boss");
+    }
+    else if(rand < 0.6666){
+      enemies.add("Warrior", "Mage");
+    }
+    else{
+      enemies.add("Warrior", "Mage", "Healer");
+    }
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
