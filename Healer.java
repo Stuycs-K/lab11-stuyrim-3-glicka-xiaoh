@@ -66,4 +66,8 @@ public String specialAttack(ArrayList<Adventurer> team) {
     setHP(getHP() + heal);
     return this.getName() + " uses 'Salvation' to restore " + manaRes + " mana and heals themselves for " + heal + " HP.";
   }
+  public String support(Adventurer other){
+    return "Throws casts a Mana Waterfall on top "+other+" to restore "
+    + other.restoreSpecial(50)+" "+other.getSpecialName();
+  }
 }
