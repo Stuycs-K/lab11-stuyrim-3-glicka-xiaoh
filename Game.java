@@ -241,7 +241,7 @@ System.out.println(Text.colorize(s, 37, b));
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit + 1/2/3";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
@@ -255,21 +255,46 @@ System.out.println(Text.colorize(s, 37, b));
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
+          if(input.contains(1){
+            party.get(whichPlayer).attack(enemies.get(0));
+          }
+          if(input.contains(2){
+            party.get(whichPlayer).attack(enemies.get(1));
+          }
+          if(input.contains(3){
+            party.get(whichPlayer).attack(enemies.get(2));
+          }
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
+          if(input.contains(1){
+            party.get(whichPlayer).specialAttack(enemies.get(0));
+          }
+          if(input.contains(2){
+            party.get(whichPlayer).specialAttack(enemies.get(1));
+          }
+          if(input.contains(3){
+            party.get(whichPlayer).specialAttack(enemies.get(2));
+          }
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+
+        //CAN SUPPORT EITHER THEMSELVES OR THEIR TEAMATE DEPENDING ON INPUT
         else if(input.startsWith("su ") || input.startsWith("support ")){
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          if(input.contains(1){
+            party.get(whichPlayer).support(enemies.get(0));
+          }
+          else if(input.contains(2){
+            party.get(whichPlayer).support(enemies.get(1));
+          }
+          else if(input.contains(3){
+            party.get(whichPlayer).support(enemies.get(2));
+          }
+          party.get(whichPlayer).support();
         }
 
         //You should decide when you want to re-ask for user input
