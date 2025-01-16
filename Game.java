@@ -45,6 +45,8 @@ public class Game{
           drawText("|", y, 2 *WIDTH/3, Text.BLACK);
         }
 
+        drawParty(party, 1);
+
   //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
@@ -108,7 +110,7 @@ System.out.println(Text.colorize(s, 37, b));
     *Caffeine: 20 Mana: 10   Snark: 1
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
 */
-/*
+
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       String names = "";
       String hp = "";
@@ -262,13 +264,13 @@ System.out.println(Text.colorize(s, 37, b));
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
-          if(input.contains(1){
+          if(input.contains(1)){
             party.get(whichPlayer).attack(enemies.get(0));
           }
-          if(input.contains(2){
+          if(input.contains(2)){
             party.get(whichPlayer).attack(enemies.get(1));
           }
-          if(input.contains(3){
+          if(input.contains(3)){
             party.get(whichPlayer).attack(enemies.get(2));
           }
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -276,13 +278,13 @@ System.out.println(Text.colorize(s, 37, b));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
-          if(input.contains(1){
+          if(input.contains(1)){
             party.get(whichPlayer).specialAttack(enemies.get(0));
           }
-          if(input.contains(2){
+          if(input.contains(2)){
             party.get(whichPlayer).specialAttack(enemies.get(1));
           }
-          if(input.contains(3){
+          if(input.contains(3)){
             party.get(whichPlayer).specialAttack(enemies.get(2));
           }
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -292,13 +294,13 @@ System.out.println(Text.colorize(s, 37, b));
 
         //CAN SUPPORT EITHER THEMSELVES OR THEIR TEAMATE DEPENDING ON INPUT
         else if(input.startsWith("su ") || input.startsWith("support ")){
-          if(input.contains(1){
+          if(input.contains(1)){
             party.get(whichPlayer).support(enemies.get(0));
           }
-          else if(input.contains(2){
+          else if(input.contains(2)){
             party.get(whichPlayer).support(enemies.get(1));
           }
-          else if(input.contains(3){
+          else if(input.contains(3)){
             party.get(whichPlayer).support(enemies.get(2));
           }
           party.get(whichPlayer).support();
