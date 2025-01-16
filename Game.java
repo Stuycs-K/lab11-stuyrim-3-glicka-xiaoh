@@ -207,11 +207,12 @@ System.out.println(Text.colorize(s, 37, b));
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     //Make the classes random. Replace strings with the actual constructor
+    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     Warrior EnemyWarrior = new Warrior("Enemy Warrior");
     Mage EnemyMage = new Mage("Enemy Mage");
     Healer EnemyHealer = new Healer("Enemy Mage");
     Boss Boss = new Boss("Iron Fist");
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+
     double rand = Math.random();
     if(rand < 0.3333){
       enemies.add(Boss);
@@ -223,7 +224,7 @@ System.out.println(Text.colorize(s, 37, b));
     else{
       enemies.add(EnemyWarrior);
       enemies.add(EnemyMage);
-      enemies.add(EnemyMage);
+      enemies.add(EnemyHealer);
     }
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
@@ -250,7 +251,7 @@ System.out.println(Text.colorize(s, 37, b));
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit + 1/2/3";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
@@ -264,6 +265,7 @@ System.out.println(Text.colorize(s, 37, b));
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
+<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).attack(enemies.get(0));
           }
@@ -273,11 +275,14 @@ System.out.println(Text.colorize(s, 37, b));
           if(input.contains(3)){
             party.get(whichPlayer).attack(enemies.get(2));
           }
+=======
+>>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
+<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).specialAttack(enemies.get(0));
           }
@@ -287,13 +292,14 @@ System.out.println(Text.colorize(s, 37, b));
           if(input.contains(3)){
             party.get(whichPlayer).specialAttack(enemies.get(2));
           }
+=======
+>>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-
-        //CAN SUPPORT EITHER THEMSELVES OR THEIR TEAMATE DEPENDING ON INPUT
         else if(input.startsWith("su ") || input.startsWith("support ")){
+<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).support(enemies.get(0));
           }
@@ -304,6 +310,13 @@ System.out.println(Text.colorize(s, 37, b));
             party.get(whichPlayer).support(enemies.get(2));
           }
           party.get(whichPlayer).support();
+=======
+          //"support 0" or "su 0" or "su 2" etc.
+          //assume the value that follows su  is an integer.
+          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+          //YOUR CODE HERE
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+>>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
         }
 
         //You should decide when you want to re-ask for user input
