@@ -205,16 +205,23 @@ System.out.println(Text.colorize(s, 37, b));
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     //Make the classes random. Replace strings with the actual constructor
+    Warrior EnemyWarrior = new Warrior("Enemy Warrior");
+    Mage EnemyMage = new Mage("Enemy Mage");
+    Healer EnemyHealer = new Healer("Enemy Mage");
+    Boss Boss = new Boss("Iron Fist");
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     double rand = Math.random();
     if(rand < 0.3333){
-      enemies.add(new Boss = new Boss());
+      enemies.add(Boss);
     }
     else if(rand < 0.6666){
-      enemies.add("Warrior", "Mage");
+      enemies.add(EnemyWarrior);
+      enemies.add(EnemyMage);
     }
     else{
-      enemies.add("Warrior", "Mage", "Healer");
+      enemies.add(EnemyWarrior);
+      enemies.add(EnemyMage);
+      enemies.add(EnemyMage);
     }
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
