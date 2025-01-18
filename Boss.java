@@ -8,11 +8,6 @@ public class Boss extends Adventurer{
     manaMax = 200;
     mana = 150;
   }
-
-  public Boss(String name, int hp){
-    this(name,hp);
-  }
-
   public Boss(String name){
     this(name,100);
   }

@@ -1,7 +1,7 @@
 public class Healer extends Adventurer{
   int mana, manaMax;
 
-  public Healer(String name, int hp, String class){
+  public Healer(String name, int hp){
     super(name,hp,false);
     manaMax = 100;
     mana = 25;
@@ -32,7 +32,7 @@ public class Healer extends Adventurer{
   }
 
   public String attack(Adventurer other){
-    if(isEnemy()){
+    if(isEnemy() != other.isEnemy()){
       int damage = 5;
       other.applyDamage(damage);
       restoreSpecial(10);

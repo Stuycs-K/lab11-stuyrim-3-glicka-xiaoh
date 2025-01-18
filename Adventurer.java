@@ -2,7 +2,15 @@ import java.util.Random;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private boolean isEnemy;
 
+  private boolean isEnemy(){
+    return isEnemy;
+  }
+
+  public void setIsEnemy(boolean isEnemy){
+    this.isEnemy = isEnemy;
+  }
   //Abstract methods are meant to be implemented in child classes.
   /*
   all adventurers must have a custom special

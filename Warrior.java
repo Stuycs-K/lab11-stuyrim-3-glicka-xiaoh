@@ -4,7 +4,7 @@ public class Warrior extends Adventurer{
 
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
-  public Warrior(String name, int hp, String class, String preferredClass){
+  public Warrior(String name, int hp, String preferredClass){
     super(name,hp);
     manaMax = 100;
     mana = 50;
