@@ -8,6 +8,32 @@ public class Game{
 
   public static void main(String[] args) {
   //  run();
+    Scanner userInput = new Scanner(System.in);
+    ArrayList<Adventurer> playerParty = new ArrayList<>();
+    ArrayList<Adventurer> enemyParty = new ArrayList<>();
+
+  //Player setup
+    System.out.println("Welcome to H and A's Adventurer Game!");
+    System.out.println("Create your party with 3 adventurers!");
+    for(int i = 1; i <= 3; i++){
+      System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
+      int classChoice = userInput.nextInt();
+      userInput.nextLine();
+
+      System.out.println("Enter name for playuer " + i + ": ");
+      String name = userInput.nextLine();
+
+      if(classChoice == 1){
+        playerParty.add(new Warrior(name));
+      } else if (classChoice == 2){
+        playerParty.add(new Mage(name));
+      } else if (classChoice == 3){
+        playerParty.add(new Healer(name));
+      } else {
+        System.out.println("Invalid! You'll just be warrior i guess");
+        playerParty.add(new Warrior(name));
+      }
+    }
   }
 
   //Display the borders of your screen that will not change.
