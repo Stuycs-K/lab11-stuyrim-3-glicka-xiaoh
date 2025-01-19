@@ -218,16 +218,16 @@ System.out.println(Text.colorize(s, 37, b));
 
     double rand = Math.random();
     if(rand < 0.3333){
-      enemies.add(Boss);
+      enemyParty.add(Boss);
     }
     else if(rand < 0.6666){
-      enemies.add(EnemyWarrior);
-      enemies.add(EnemyMage);
+      enemyParty.add(EnemyWarrior);
+      enemyParty.add(EnemyMage);
     }
     else{
-      enemies.add(EnemyWarrior);
-      enemies.add(EnemyMage);
-      enemies.add(EnemyHealer);
+      enemyParty.add(EnemyWarrior);
+      enemyParty.add(EnemyMage);
+      enemyParty.add(EnemyHealer);
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
