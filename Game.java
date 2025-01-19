@@ -8,32 +8,6 @@ public class Game{
 
   public static void main(String[] args) {
   //  run();
-    Scanner userInput = new Scanner(System.in);
-    ArrayList<Adventurer> playerParty = new ArrayList<>();
-    ArrayList<Adventurer> enemyParty = new ArrayList<>();
-
-  //Player setup
-    System.out.println("Welcome to H and A's Adventurer Game!");
-    System.out.println("Create your party with 3 adventurers!");
-    for(int i = 1; i <= 3; i++){
-      System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
-      int classChoice = userInput.nextInt();
-      userInput.nextLine();
-
-      System.out.println("Enter name for playuer " + i + ": ");
-      String name = userInput.nextLine();
-
-      if(classChoice == 1){
-        playerParty.add(new Warrior(name));
-      } else if (classChoice == 2){
-        playerParty.add(new Mage(name));
-      } else if (classChoice == 3){
-        playerParty.add(new Healer(name));
-      } else {
-        System.out.println("Invalid! You'll just be warrior i guess");
-        playerParty.add(new Warrior(name));
-      }
-    }
   }
 
   //Display the borders of your screen that will not change.
@@ -227,13 +201,16 @@ System.out.println(Text.colorize(s, 37, b));
     Text.hideCursor();
     Text.clear();
 
+    Scanner userInput = new Scanner(System.in);
+    ArrayList<Adventurer> playerParty = new ArrayList<>();
+    ArrayList<Adventurer> enemyParty = new ArrayList<>();
 
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     //Make the classes random. Replace strings with the actual constructor
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     Warrior EnemyWarrior = new Warrior("Enemy Warrior");
     Mage EnemyMage = new Mage("Enemy Mage");
     Healer EnemyHealer = new Healer("Enemy Mage");
@@ -252,15 +229,33 @@ System.out.println(Text.colorize(s, 37, b));
       enemies.add(EnemyMage);
       enemies.add(EnemyHealer);
     }
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+    System.out.println("Welcome to H and A's Adventurer Game!");
+    System.out.println("Create your party with 3 adventurers!");
+    for(int i = 1; i <= 3; i++){
+      System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
+            int classChoice = userInput.nextInt();
+            userInput.nextLine();
+
+            System.out.println("Enter name for player " + i + ": ");
+            String name = userInput.nextLine();
+
+            if (classChoice == 1) {
+                playerParty.add(new Warrior(name));
+            } else if (classChoice == 2) {
+                playerParty.add(new Mage(name));
+            } else if (classChoice == 3) {
+                playerParty.add(new Healer(name));
+            } else {
+                System.out.println("Invalid! You'll just be Warrior lol");
+                playerParty.add(new Warrior(name));
+            }
+        }
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -291,7 +286,6 @@ System.out.println(Text.colorize(s, 37, b));
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
-<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).attack(enemies.get(0));
           }
@@ -301,14 +295,11 @@ System.out.println(Text.colorize(s, 37, b));
           if(input.contains(3)){
             party.get(whichPlayer).attack(enemies.get(2));
           }
-=======
->>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
-<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).specialAttack(enemies.get(0));
           }
@@ -318,14 +309,11 @@ System.out.println(Text.colorize(s, 37, b));
           if(input.contains(3)){
             party.get(whichPlayer).specialAttack(enemies.get(2));
           }
-=======
->>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("su ") || input.startsWith("support ")){
-<<<<<<< HEAD
           if(input.contains(1)){
             party.get(whichPlayer).support(enemies.get(0));
           }
@@ -336,13 +324,6 @@ System.out.println(Text.colorize(s, 37, b));
             party.get(whichPlayer).support(enemies.get(2));
           }
           party.get(whichPlayer).support();
-=======
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
->>>>>>> 617ed460da8732f992b4eae9ec28eee81703b4b5
         }
 
         //You should decide when you want to re-ask for user input
