@@ -48,7 +48,7 @@ public class Game{
 
         drawParty(playerParty, 1);
         drawParty(enemyParty, 20);
-
+//System.out.println("done");
   //  drawText(" ", x, y, 10);
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
@@ -76,6 +76,7 @@ System.out.println(Text.colorize(s, 37, b));
   *@param width the number of characters per row
   *@param height the number of rows
   */
+  /*
   public static void TextBox(int row, int col, int width, int height, String text){
     int ind = 0;
     for (int i = 0; i < height; i++) {
@@ -92,6 +93,22 @@ System.out.println(Text.colorize(s, 37, b));
     }
   }
 
+*/
+public static void TextBox(int row, int col, int width, int height, String text){
+    int ind = 0;
+    for (int i = 0; i < height; i++) {
+        String line = "";
+        while (line.length() < width && ind < text.length()) {
+            line += text.charAt(ind);
+            ind++;
+        }
+        while (line.length() < width) {
+            line += " ";
+        }
+
+        drawText(line, row + i, col, 0);
+    }
+}
 
 
 
@@ -120,19 +137,21 @@ System.out.println(Text.colorize(s, 37, b));
       String hp = "";
       String special = "";
       for (Adventurer adventurer : party) {
-        names += adventurer.getName() + "    ";
-        hp += "HP: " + adventurer.getHP() + "    ";
-        special += adventurer.getSpecialName() + ": " + adventurer.getSpecial() + "    ";
+        names += adventurer.getName() + "                             ";
+          names = names.substring(0, names.length() - adventurer.getName().length());
+
+        hp += "HP: " + adventurer.getHP() + "                      ";
+        special += adventurer.getSpecialName() + ": " + adventurer.getSpecial() + "                    ";
       }
 
       names = names.substring(0, names.length()-4);
       hp = hp.substring(0, hp.length()-4);
       special = special.substring(0, special.length()-4);
 
-      TextBox(startRow, 1, 20, 4, names);
-      TextBox(startRow + 1, 1, 20, 4, hp);
-      TextBox(startRow + 2, 1, 20, 4, special);
-      TextBox(startRow + 3, 1, 20, 4, "");
+      TextBox(startRow + 2, 1, 80, 4, names);
+      TextBox(startRow + 3, 1, 80, 4, hp);
+      TextBox(startRow + 4, 1, 80, 4, special);
+      TextBox(startRow + 5, 1, 80, 1, "");
     }
 
 
@@ -170,7 +189,7 @@ System.out.println(Text.colorize(s, 37, b));
   public static void drawScreen(ArrayList<Adventurer> playerParty, ArrayList<Adventurer> enemyParty){
 
     drawBackground(playerParty, enemyParty);
-
+//System.out.println("done");
     //draw player party
 
     //draw enemy party
@@ -282,16 +301,15 @@ System.out.println(Text.colorize(s, 37, b));
 
     //You can add parameters to draw screen!
     drawScreen(playerParty, enemyParty);//initial state.
-
     //Main loop
-
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/quit";
-
+    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/quit:";
+    TextBox(15, 1, 80, 3, preprompt);
+    Text.go(15, 40);
+    input = userInput(in);
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
-
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
@@ -349,18 +367,56 @@ System.out.println(Text.colorize(s, 37, b));
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/quit";
+          TextBox(15, 1, 80, 3, prompt);
+            Text.go(15, 40);
 
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
-
+          String prompt = "Press enter to see enemy's turn";
+          TextBox(15, 1, 80, 3, prompt);
+          Text.go(15, 40);
           partyTurn = false;
           whichOpponent = 0;
         }
         //done with one party member
       }else{
+        if (whichOpponent < enemyParty.size()) {
+               Adventurer enemy = enemyParty.get(whichOpponent);
+               double enemyAction = Math.random();
+
+               if (enemyAction < 0.33) {
+                   // Enemy attacks a random player
+                   int playerIndex = (int)(Math.random() * playerParty.size());
+                   enemy.attack(playerParty.get(playerIndex));
+               }
+               else if (enemyAction < 0.66) {
+                   // Enemy uses special attack on a random player
+                   int playerIndex = (int)(Math.random() * playerParty.size());
+                   enemy.specialAttack(playerParty.get(playerIndex));
+               } else {
+                   // Enemy supports a random ally
+                   int enemyIndex = (int)(Math.random() * enemyParty.size());
+                   enemy.support(enemyParty.get(enemyIndex));
+               }
+  whichOpponent++;}
+  else{
+    whichPlayer = 0;
+    turn++;
+    partyTurn = true;
+    String prompt = "Enter command for "+playerParty.get(whichPlayer).getName()+": attack/special/quit";
+    TextBox(15, 1, 80, 3, prompt);
+    Text.go(15, 40);
+  }
+}
+drawScreen(playerParty, enemyParty);
+}
+quit();
+}
+}
+
+
         //not the party turn!
 
 
@@ -370,7 +426,7 @@ System.out.println(Text.colorize(s, 37, b));
         //YOUR CODE HERE
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-
+/*
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
 
@@ -400,3 +456,4 @@ System.out.println(Text.colorize(s, 37, b));
     quit();
   }
 }
+*/
