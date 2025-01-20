@@ -8,7 +8,7 @@ public class Warrior extends Adventurer{
     super(name,hp);
     manaMax = 100;
     mana = 50;
-    preferredClass = class;
+    this.preferredClass = preferredClass;
   }
 
   public Warrior(String name, int hp){

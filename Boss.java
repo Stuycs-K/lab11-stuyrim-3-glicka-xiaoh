@@ -4,7 +4,7 @@ public class Boss extends Adventurer{
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public Boss(String name, int hp){
-    super(name,hp,false);
+    super(name,hp);
     manaMax = 200;
     mana = 150;
   }
@@ -52,7 +52,9 @@ public class Boss extends Adventurer{
       return "Not enough mana to use their special. Instead "+attack(other);
     }
   }
-
+public String support(Adventurer other){
+  return "this is temp";
+}
   public String support(){
     int hp = 30;
     setHP(getHP()+hp);

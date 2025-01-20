@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class Healer extends Adventurer{
   int mana, manaMax;
 
   public Healer(String name, int hp){
-    super(name,hp,false);
+    super(name,hp);
     manaMax = 100;
     mana = 25;
   }
@@ -32,20 +33,15 @@ public class Healer extends Adventurer{
   }
 
   public String attack(Adventurer other){
-    if(isEnemy() != other.isEnemy()){
       int damage = 5;
       other.applyDamage(damage);
       restoreSpecial(10);
       return this.getName() + " tickled "+ other + " and dealt "+ damage +
       " points of damage.";
-    }
-    else {
-      int restore = (int)(Math.random()*19)+10;
-      other.setHP(getHP() + restore);
-      return this.getName() + " casts 'Dia' to heal" + other.getName() + " for " + restore + " health!";
-    }
   }
-
+public String specialAttack(Adventurer other) {
+  return "shouldn't be calling this";
+}
 public String specialAttack(ArrayList<Adventurer> team) {
         if (getSpecial() >= 60) {
             setSpecial(getSpecial() - 60);

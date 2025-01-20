@@ -5,7 +5,7 @@ public class Mage extends Adventurer{
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public Mage(String name, int hp){
-    super(name,hp,false);
+    super(name,hp);
     manaMax = 100;
     mana = 35;
   }
