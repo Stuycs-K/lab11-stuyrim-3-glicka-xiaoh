@@ -273,6 +273,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
       System.out.println("The Warrior deals 20 damage per attack, but for his special he deals a large random amount.");
       System.out.println("The Mage does 25 damage per attack, and for their special they throw a 60 damage fireball.");
       System.out.println("The healer does only 5 damage per attack, their special restores 30 HP to an ally or themselves");
+            System.out.println("CLICK ENTER TO GO TO THE NEXT STEP");
     for(int i = 1; i <= 3; i++){
       System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
             int classChoice = userInput.nextInt();
@@ -294,7 +295,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
         }
 
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
+Text.clear();
     boolean partyTurn = true;
     int whichPlayer = 0;
     int whichOpponent = 0;
@@ -307,7 +308,12 @@ public static void TextBox(int row, int col, int width, int height, String text)
     drawScreen(playerParty, enemyParty);//initial state.
     //Main loop
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit + 1, 2, or 3:";
+    String extra = "";
+    for (int i = 1; i < enemyParty.size() + 1; i++){
+      extra +=i + " ";
+    }
+
+    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
     TextBox(15, 1, 80, 3, preprompt);
     Text.go(17, 40);
     input = userInput(in);
@@ -388,7 +394,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
 
         if(whichPlayer < playerParty.size()){
           drawScreen(playerParty, enemyParty);
-           preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit + 1, 2, or 3:";
+            preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
           TextBox(15, 1, 80, 3, preprompt);
           Text.go(1, 1);
           input = userInput(in);
@@ -445,7 +451,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
     whichPlayer = 0;
     turn++;
     partyTurn = true;
-    String prompt = "Enter command for "+playerParty.get(whichPlayer).getName()+": attack/special/support/quit + 1, 2, or 3:";
+  String prompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
     TextBox(15, 1, 80, 3, prompt);
     input = userInput(in);
 
