@@ -39,17 +39,13 @@ public class Healer extends Adventurer{
       return this.getName() + " tickled "+ other + " and dealt "+ damage +
       " points of damage.";
   }
+
 public String specialAttack(Adventurer other) {
-  return "shouldn't be calling this";
-}
-public String specialAttack(ArrayList<Adventurer> team) {
         if (getSpecial() >= 60) {
             setSpecial(getSpecial() - 60);
             int restore = 30;
-            for (Adventurer member : team) {
-                member.setHP(member.getHP() + restore);
-            }
-            return this.getName() + " summons Mediarahan to heal the whole team for " + restore + " health!";
+              other.setHP(other.getHP() + restore);
+            return this.getName() + " summons Mediarahan to heal " + other.getName() +  " for " + restore + " health!";
         } else {
             return "Not enough mana to use their ultimate. They started started panicking";
         }

@@ -37,7 +37,7 @@ public class Boss extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(5);
     return this + " used Jeet Kune Do on "+ other + " and dealt "+ damage +
-    " points of damage. They then meditated for 5 mana";
+    " points of damage. They then meditated to restore 5 mana";
   }
 
   public String specialAttack(Adventurer other){

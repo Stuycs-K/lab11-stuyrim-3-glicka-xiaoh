@@ -44,7 +44,7 @@ public class Warrior extends Adventurer{
     other.applyDamage(damage);
     restoreSpecial(5);
     return this.getName() + " attacked "+ other + " and dealt "+ damage +
-    " points of damage. They then taunted.";
+    " points of damage. They then restored 5 mana";
   }
 
   public String specialAttack(Adventurer other){

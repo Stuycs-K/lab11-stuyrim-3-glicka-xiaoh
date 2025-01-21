@@ -4,7 +4,7 @@ import java.util.Random;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.GREEN;
+  private static final int BORDER_COLOR = Text.RED;
   private static final int BORDER_BACKGROUND = Text.CYAN + Text.BACKGROUND;
 
   public static void main(String[] args) {
@@ -22,11 +22,11 @@ public class Game{
 
     int line = 0;
         for (int x = 1; x < WIDTH; x++) {
-          drawText("-", line, x, Text.RED);
+          drawText("-", line, x, Text.GREEN);
         }
     int line1 = HEIGHT / 3;
         for (int x = 1; x < WIDTH; x++) {
-          drawText("-", line1, x, Text.RED);
+          drawText("-", line1, x, Text.GREEN);
         }
         int line2 = (HEIGHT * 2) / 3;
         for (int x = 1; x < WIDTH; x++) {
@@ -136,10 +136,10 @@ public static void TextBox(int row, int col, int width, int height, String text)
       String names = "";
       String hp = "";
       String special = "";
+  //    String attackDamage = "";
       for (Adventurer adventurer : party) {
         names += adventurer.getName() + "                             ";
           names = names.substring(0, names.length() - adventurer.getName().length());
-
         hp += "HP: " + adventurer.getHP() + "                      ";
         special += adventurer.getSpecialName() + ": " + adventurer.getSpecial() + "                    ";
       }
@@ -151,7 +151,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
       TextBox(startRow + 2, 1, 80, 4, names);
       TextBox(startRow + 3, 1, 80, 4, hp);
       TextBox(startRow + 4, 1, 80, 4, special);
-      TextBox(startRow + 5, 1, 80, 1, "");
+      TextBox(startRow + 5, 1, 80, 1, " ");
       Text.go(17, 40);
     }
 
@@ -199,7 +199,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-        Text.go(15, 45);
+        Text.go(16, 45);
         Text.showCursor();
       //show cursor
 
@@ -245,10 +245,10 @@ public static void TextBox(int row, int col, int width, int height, String text)
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     //Make the classes random. Replace strings with the actual constructor
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    Warrior EnemyWarrior = new Warrior("Enemy Warrior");
-    Mage EnemyMage = new Mage("Enemy Mage");
-    Healer EnemyHealer = new Healer("Enemy Healer");
-    Boss Boss = new Boss("Iron Fist");
+    Warrior EnemyWarrior = new Warrior(" 1 : Enemy Warrior");
+    Mage EnemyMage = new Mage(" 2 : Enemy Mage");
+    Healer EnemyHealer = new Healer(" 3 : Enemy Healer");
+    Boss Boss = new Boss(" 1 : Iron Fist");
 
     double rand = Math.random();
     if(rand < 0.3333){
@@ -268,8 +268,11 @@ public static void TextBox(int row, int col, int width, int height, String text)
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    System.out.println("Welcome to H and A's Adventurer Game!");
+    System.out.println("Welcome to H and A's Adventurer Game! In this game you build your very own team comprised of three adventurers of your choice. Each adventurer has an attack, a special, and a support ability.");
     System.out.println("Create your party with 3 adventurers!");
+      System.out.println("The Warrior deals 20 damage per attack, but for his special he deals a large random amount.");
+      System.out.println("The Mage does 25 damage per attack, and for their special they throw a 60 damage fireball.");
+      System.out.println("The healer does only 5 damage per attack, their special restores 30 HP to an ally or themselves");
     for(int i = 1; i <= 3; i++){
       System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
             int classChoice = userInput.nextInt();
@@ -304,7 +307,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
     drawScreen(playerParty, enemyParty);//initial state.
     //Main loop
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/quit:";
+    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit + 1, 2, or 3:";
     TextBox(15, 1, 80, 3, preprompt);
     Text.go(17, 40);
     input = userInput(in);
@@ -385,7 +388,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
 
         if(whichPlayer < playerParty.size()){
           drawScreen(playerParty, enemyParty);
-           preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/quit:";
+           preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit + 1, 2, or 3:";
           TextBox(15, 1, 80, 3, preprompt);
           Text.go(1, 1);
           input = userInput(in);
@@ -442,7 +445,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
     whichPlayer = 0;
     turn++;
     partyTurn = true;
-    String prompt = "Enter command for "+playerParty.get(whichPlayer).getName()+": attack/special/quit";
+    String prompt = "Enter command for "+playerParty.get(whichPlayer).getName()+": attack/special/support/quit + 1, 2, or 3:";
     TextBox(15, 1, 80, 3, prompt);
     input = userInput(in);
 
