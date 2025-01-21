@@ -138,10 +138,10 @@ public static void TextBox(int row, int col, int width, int height, String text)
       String special = "";
   //    String attackDamage = "";
       for (Adventurer adventurer : party) {
-        names += adventurer.getName() + "                             ";
+        names += adventurer.getName() + "                           ";
           names = names.substring(0, names.length() - adventurer.getName().length());
-        hp += "HP: " + adventurer.getHP() + "                      ";
-        special += adventurer.getSpecialName() + ": " + adventurer.getSpecial() + "                    ";
+        hp += "HP: " + colorByPercent(adventurer.getHP(), adventurer.getmaxHP()) + "                   ";
+        special += adventurer.getSpecialName() + ": " + adventurer.getSpecial() + "                   ";
       }
 
       names = names.substring(0, names.length()-4);
@@ -164,7 +164,8 @@ public static void TextBox(int row, int col, int width, int height, String text)
 
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
-    String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
+    String output = String.format("%2s", hp+"");
+    //+"/"+String.format("%2s", maxHP+"");
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     // under 75% : yellow
@@ -273,7 +274,7 @@ public static void TextBox(int row, int col, int width, int height, String text)
       System.out.println("The Warrior deals 20 damage per attack, but for his special he deals a large random amount.");
       System.out.println("The Mage does 25 damage per attack, and for their special they throw a 60 damage fireball.");
       System.out.println("The healer does only 5 damage per attack, their special restores 30 HP to an ally or themselves");
-            System.out.println("CLICK ENTER TO GO TO THE NEXT STEP");
+            System.out.println("After you select your players you have to CLICK ENTER TO GO TO THE NEXT STEP");
     for(int i = 1; i <= 3; i++){
       System.out.println("Select class for player " + i + ": (1) Warrior, (2) Mage, (3) Healer");
             int classChoice = userInput.nextInt();
@@ -313,7 +314,7 @@ Text.clear();
       extra +=i + " ";
     }
 
-    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
+    String preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra + " or if your supporting follow with 1, 2, or 3.";
     TextBox(15, 1, 80, 3, preprompt);
     Text.go(17, 40);
     input = userInput(in);
@@ -394,7 +395,7 @@ Text.clear();
 
         if(whichPlayer < playerParty.size()){
           drawScreen(playerParty, enemyParty);
-            preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
+            preprompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra + " or if your supporting follow with 1, 2, or 3.";
           TextBox(15, 1, 80, 3, preprompt);
           Text.go(1, 1);
           input = userInput(in);
@@ -451,7 +452,7 @@ Text.clear();
     whichPlayer = 0;
     turn++;
     partyTurn = true;
-  String prompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra;
+  String prompt = "Enter command for "+playerParty.get(whichPlayer)+": attack/special/support/quit followed by " + extra + " or if your supporting follow with 1, 2, or 3.";
     TextBox(15, 1, 80, 3, prompt);
     input = userInput(in);
 
