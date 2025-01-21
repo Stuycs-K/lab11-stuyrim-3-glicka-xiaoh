@@ -15,6 +15,9 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
+**LIST OF FEATURES**
+
+
 
 ## Adventurer Subclasses
 | **Type:** | *Healer* | *Mage* | *Warrior* |
