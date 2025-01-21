@@ -92,7 +92,7 @@ public class Mage extends Adventurer{
   }
 
   public String support(Adventurer other){
-    return "Gives a throws a mana potion at "+other+" to restore "
+    return this.getName() + " throws a mana potion at "+other+" to restore "
     + other.restoreSpecial(30)+" "+other.getSpecialName();
   }
 

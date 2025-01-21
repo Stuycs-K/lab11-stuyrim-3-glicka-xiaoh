@@ -370,6 +370,11 @@ public static void TextBox(int row, int col, int width, int height, String text)
               userInput(in);
             }
           }
+          if(enemyParty.size() == 0){
+            TextBox(15, 1, 80, 3, "you won the game!");
+            userInput(in);
+            break;
+          }
 
 
         //You should decide when you want to re-ask for user input
@@ -426,6 +431,11 @@ public static void TextBox(int row, int col, int width, int height, String text)
                      playerParty.remove(i);
                      userInput(in);
                    }
+                 }
+                 if(playerParty.size() == 0){
+                   TextBox(15, 1, 80, 3, "you lose the game");
+                   userInput(in);
+                   break;
                  }
   whichOpponent++;}
   else{
