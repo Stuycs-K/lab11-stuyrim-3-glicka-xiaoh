@@ -15,7 +15,11 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-**LIST OF FEATURES**
+**LIST OF FEATURES:**
+:white_check_mark: all characters can attack all other individual enemies,
+:white_check_mark: all characters can support all other allies,
+:white_check_mark: all characters can special attack all other individual enemies,
+:ballot_box_with_check: You can choose the name and type of all three of your characters,
 
 
 
