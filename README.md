@@ -19,6 +19,9 @@ Make a clear list of features that work/dont work
 :white_check_mark: all characters can attack all other individual enemies,
 :white_check_mark: all characters can support all other allies,
 :white_check_mark: all characters can special attack all other individual enemies,
+:white_check_mark: The HP of the characters changed colors as it decreased.
+:white_check_mark: The opponents were randomized
+:white_check_mark: I displayed all characters HP and Mana that updated after every turn.
 :ballot_box_with_check: You can choose the name and type of all three of your characters,
 
 
