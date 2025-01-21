@@ -22,6 +22,7 @@ Make a clear list of features that work/dont work
 :white_check_mark: The HP of the characters changed colors as it decreased.
 :white_check_mark: The opponents were randomized
 :white_check_mark: I displayed all characters HP and Mana that updated after every turn.
+:white_check_mark: Made boss class
 :ballot_box_with_check: You can choose the name and type of all three of your characters,
 
 
